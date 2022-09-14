@@ -63,15 +63,15 @@ app.post('/games/:id/ads', async (req, res) => {
   const body = req.body;
 
   const ad = await prisma.ad.create({    
-    // @ts-expect-error
     data: {
-      id: body.id,
+      gameId,
       name: body.name,
-      weekDays: body.weekDays,
+      yearsPlaying: body.yearsPlaying,
+      discord: body.discord,
+      weekDays: body.weekDays.join(','),
       hourStart: convertHourStringToMinutes(body.hourStart),
       hourEnd: convertHourStringToMinutes(body.hourEnd),
       useVoiceChannel: body.useVoiceChannel,
-      yearsPlaying: body.yearsPlaying,
     }
   })
 
@@ -93,10 +93,6 @@ app.get('/ads/:id/discord', async (req, res) => {
   return res.json({
     discord: ad.discord,
   });
-});
-
-app.get('/ads', (req, res) => {
-  return res.json([]);
 });
 
 app.listen(3333);
