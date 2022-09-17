@@ -2,7 +2,7 @@ import React, { InputHTMLAttributes } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
-const Form: React.FC<InputProps> = (props) => {
+const Input: React.FC<InputProps> = (props) => {
   return (
     <input 
       {...props}
@@ -11,4 +11,4 @@ const Form: React.FC<InputProps> = (props) => {
   );
 }
 
-export default Form;
+export default Input;
